@@ -1,0 +1,14 @@
+<h1>
+    ContactNumber {{  contactNumber | countryCode : '+80'}}
+
+    MyData : {{ myData | async}}
+
+    List of Todos :
+  <input type = "text" [(ngModel)] = "filteredText">
+<ul>
+    <li *ngFor="let item of listofTodos | filter: filteredText : 'status'" > 
+      {{ item.name}}
+      <span class="badge"> {{ item.status }}</span>
+    </li>
+  </ul>
+</h1>

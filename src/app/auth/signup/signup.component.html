@@ -1,0 +1,47 @@
+<div class="container">
+    <h1 class="text-center text-warning">
+      Register
+    </h1>
+  <form class="form-horizontal well" [formGroup] = "registerForm">
+    <div class="form-group">
+      <label for="username">Username : </label>
+      <input type="email" 
+        name="username"
+        class="form-control"
+        [formControl] = "username">
+    </div>
+    <div [hidden]="username.valid && username.dirty">
+        Some Problem with Username.
+        <div [hidden]="!username.hasError('required')">
+          Username is mandatory field.
+        </div>
+        <div [hidden]="!username.hasError('minlength')">
+            Username should be minimum 5 characters long.
+          </div>
+          
+      </div>
+
+    <div class="form-group">
+        <label for="password">Password : </label>
+        <input type="password" 
+          name="password"
+          class="form-control"
+          [formControl] = "password">
+      </div>
+
+      <div [hidden]="password.valid && password.dirty">
+          Some Problem with password.
+          <div [hidden]="!password.hasError('required')">
+              password is mandatory field.
+          </div>
+          <div [hidden]="!password.hasError('needExclamation')">
+              Password needs Exclamation
+            </div>
+            
+        </div>
+    <button (click) = "onRegister()" [disabled]= "username.invalid || password.invalid"
+      class="btn btn-warning">
+      Register
+    </button>
+  </form>
+  </div>

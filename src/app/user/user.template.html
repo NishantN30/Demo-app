@@ -1,0 +1,47 @@
+<ng-content></ng-content>
+
+<div class="container well">
+    <input type="text" #childCtrl (keyup)="onKeyUp(childCtrl.value)">
+</div>
+
+
+<h1> User Component Loaded </h1>
+
+<h2> Coming from Parent : {{ title }}</h2>
+<h2> First Name :  {{ firstName }}</h2>
+<!-- ng g d directive/unless -spec false-->
+<ul class= "list-unstyled">
+    <div class="container">
+    <li class="well" *ngFor="let user of users; even as isEven"><!-- options available for index, odd, first , last, even-->
+        Is this Even ? {{ isEven }} <br>
+        <img [src] = "user.image"/>
+        <button  class="btn btn-info btn-sm" (click) = "moreInfo(user)" >More info</button>
+        <h1 appHighlight [defaultColor]="'yellow'"> {{ user.firstName | uppercase}} {{ user.lastName | uppercase}}</h1>
+        <p>Date of Birth : {{ user.dob | date : 'dd-MM-yyyy'}}</p>
+        <p *ngIf="user.isWorking; else ElseTemplate"> Income: {{ user.income | currency : 'INR'}}</p>
+        <ng-template #ElseTemplate>
+            <p> {{ user.firstName }} is not working now</p>
+        </ng-template>
+
+        <!-- Alternative to *ngIf (Custom Directive)-->
+        <!--<p *appUnless="user.isWorking"> Income: {{ user.income }}</p>-->
+
+        <!-- Alternative to *ngIf -->
+        <!--<ng-template [ngIf]="user.isWorking"> 
+                <p> Income: {{ user.income }}</p>
+        </ng-template>-->
+        <em class="pull-right">
+            Total Vote : {{user.vote}}
+
+            <!-- Alternative to ngModel-->
+            <!--<input type="number" [value] = "user.vote" (change) = "user.vote=$event.target.value">-->
+            <input type="number" 
+                [(ngModel)] = "user.vote"
+            />
+        </em>
+    </li>
+</div>
+</ul>
+
+<ng-content select="footer"></ng-content>
+

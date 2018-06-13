@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--<app-signup></app-signup>-->
+<!--app-signin></app-signin>-->
+<!--<app-pipe-demo></app-pipe-demo>-->
+<app-observable-demo></app-observable-demo>
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<app-user [title]= "title" [users]= "users" (childEvent) = "childEmittedEvent($event)">
+  <header> From Parent {{ title }}</header>
+  <footer> Footer Contents</footer>
+</app-user>
+
