@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { HttpModule} from '@angular/http'
+import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -14,6 +15,12 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { DataService } from './service/data.service';
 import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { APP_ROUTES } from './app.rounting';
+import { ProductComponent } from './product/product.component';
+import { OverviewComponent } from './product/overview/overview.component';
+import { SpecificationComponent } from './product/specification/specification.component';
+import { LoginGuardService } from './service/login-guard.service';
 
 
 @NgModule({
@@ -27,15 +34,21 @@ import { ObservableDemoComponent } from './observable-demo/observable-demo.compo
     FilterPipe,
     SigninComponent,
     SignupComponent,
-    ObservableDemoComponent
+    ObservableDemoComponent,
+    PagenotfoundComponent,
+    ProductComponent,
+    OverviewComponent,
+    SpecificationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(APP_ROUTES)
+
   ],
-  providers: [DataService],
+  providers: [DataService, LoginGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
