@@ -48,6 +48,10 @@ export const APP_ROUTES : Routes = [
     }]
 },
 {
+    path:'employee',
+    loadChildren : 'app/modules/employeeModule/employee.module#EmployeeModule'
+},
+{
     path : '**',
     redirectTo : 'pagenotfound',
     pathMatch : 'full'

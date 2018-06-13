@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { LoginGuardService } from '../service/login-guard.service';
 
 @Pipe({
   name: 'filter'
